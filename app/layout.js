@@ -8,10 +8,20 @@ export const metadata = {
   description: 'A simple social networking project with React',
 }
 
+import { AuthContextProvider } from "./_utils/auth-context";
+ 
+const Layout = ({ children }) => {
+  return <AuthContextProvider>{children}</AuthContextProvider>;
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Layout>
+          {children}
+        </Layout>
+      </body>
     </html>
   )
 }
