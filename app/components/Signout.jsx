@@ -2,11 +2,11 @@
 
 import { useUserAuth } from "../_utils/auth-context";
 
-export default function Login() {
-    const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
+export default function Signout() {
+    const { user, firebaseSignOut } = useUserAuth();
 
     const handleOnButtonClick = async () => {
-        await gitHubSignIn();
+        await firebaseSignOut();
     }
     
     return (
@@ -18,7 +18,7 @@ export default function Login() {
                  height={100}
                  className="rounded-3xl flex-0"/>
             <p className="mt-auto mb-auto flex-1 text-4xl text-gray-100">
-                Login with GitHub
+                Signout 
             </p>
         </section>
     )
