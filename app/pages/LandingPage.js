@@ -1,9 +1,11 @@
 "use client";
 
 import { useUserAuth } from "../_utils/auth-context";
+
 import Login from "../components/Login";
 import ProfilePage from "../components/ProfilePage";
 import Signout from "../components/Signout";
+import Post from "../components/Post";
 
 export default function LandingPage() {
     const { user } = useUserAuth();
@@ -35,6 +37,13 @@ export default function LandingPage() {
                     }
                     {user &&
                         <ProfilePage />
+                    }
+
+                    {user &&
+                        <div>
+                            <p>This is a post component</p>
+                            <Post user={user}/>
+                        </ div>
                     }
                     
                 </div>
