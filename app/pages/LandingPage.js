@@ -13,11 +13,12 @@ export default function LandingPage() {
     return (
         <main>
             <div className="flex align-middle text-center">
-                <div className="flex-1 mt-auto mb-auto py-20 px-8">
+                <div className="flex  flex-col flex-1 mt-auto mb-auto py-20 px-8 gap-8">
                     <p>This is a login/signout component</p>
-
                     {!user &&
-                        <Login />
+                        <div>
+                            <Login />
+                        </ div>
                     }
 
                     {user && 
@@ -36,7 +37,10 @@ export default function LandingPage() {
                             </div>
                     }
                     {user &&
-                        <ProfilePage />
+                        <div>
+                            <p>this is a profile component</p>
+                            <ProfilePage />
+                        </ div>
                     }
 
                     {user &&
