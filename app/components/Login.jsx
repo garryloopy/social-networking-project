@@ -2,11 +2,12 @@
 
 import { useUserAuth } from "../_utils/auth-context";
 
-export default function Login() {
+export default function Login( {onClick} ) {
     const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
 
     const handleOnButtonClick = async () => {
         await gitHubSignIn();
+        onClick();
     }
     
     return (

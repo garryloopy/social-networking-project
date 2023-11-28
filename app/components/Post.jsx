@@ -17,8 +17,8 @@ export default function Post( {user} ) {
                          height={100}
                          className="rounded-full border-2 border-gray-500"/>
                     <div className="mb-auto mt-2 text-left">
-                        <p>{user.displayName}</p>
-                        <p className="text-gray-500">11/27/2023</p>
+                        <p className="text-xl">{user.displayName}</p>
+                        <p className="text-lg text-gray-500">11/27/2023</p>
                     </div>
                 </div>
                 <div className="flex flex-row gap-2 mb-auto text-2xl">

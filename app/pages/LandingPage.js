@@ -1,14 +1,70 @@
 "use client";
 
+import {
+    useState,
+    useEffect
+} from "react";
+
 import { useUserAuth } from "../_utils/auth-context";
+
+import {
+    getAllUsers,
+    addUser
+} from "../_services/database-service"
 
 import Login from "../components/Login";
 import ProfilePage from "../components/ProfilePage";
 import Signout from "../components/Signout";
 import Post from "../components/Post";
 
+const fetchUsers = async () => {
+    const data = await getAllUsers();
+    return data;
+}
+
 export default function LandingPage() {
+    const [users, setUsers] = useState([]);
+
     const { user } = useUserAuth();
+
+    useEffect(
+        () => {
+            try {
+                if (user) {
+                    console.log("Loading users");
+                    loadUsers();
+                }
+            } catch (error) {
+                console.log("Error: ", error);
+                console.log("Something went wrong with loading users");
+            }
+            
+        }, [user]
+    )
+
+    useEffect(
+        () => {
+            try{
+
+            } catch (error) {
+                console.log("Error: ", error);
+                console.log("Something went wrong with adding user")
+            }
+        }, [users]
+    )
+
+    if (user) console.log("Logged in successfully");
+    if (users) console.log(users);
+
+    const loadUsers = async () => {
+        const data = await fetchUsers();
+        setUsers(data);
+    }
+
+    const handleOnClick = () => {
+        loadUsers();
+
+    }
 
     return (
         <main>
@@ -17,12 +73,13 @@ export default function LandingPage() {
                     <p>This is a login/signout component</p>
                     {!user &&
                         <div>
-                            <Login />
+                            <Login onClick={handleOnClick}/>
                         </ div>
                     }
 
                     {user && 
                         <div className="flex justify-between">
+                            <p>{user.uid}</p>
                             <div className="flex flex-row gap-2 border-gray-800 border p-2 rounded-xl bg-gray-950 mt-2 mb-2">
                                 
                                 <img src={user.photoURL} className="w-8 h-8 rounded-full mt-auto mb-auto" alt="User image"/>
