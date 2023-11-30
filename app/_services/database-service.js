@@ -1,41 +1,36 @@
 import { db } from "../_utils/firebase";
-
-import { 
-    collection, 
-    getDocs, 
-    addDoc, 
-    query, 
-    doc ,
-    deleteDoc
-} from "firebase/firestore"; 
+import { collection, getDocs, addDoc } from "firebase/firestore";
 
 export const getAllUsers = async () => {
-    const q = query(
-        collection(db, "users")
-    );
+    try {
+        const q = collection(db, "users");
+        const querySnapshot = await getDocs(q);
 
-    const querySnapshot = await getDocs(q);
+        let users = [];
 
-    let users = [];
-    querySnapshot.forEach(
-        (doc) => {
-            users.push( 
-                {
-                    userId: doc.id,
-                }
-            )
-        }
-    )
+        querySnapshot.forEach((doc) => { console.log(doc.id) });
+        querySnapshot.forEach((doc) => {
+            users.push({
+                userId: doc.id,
+            });
+        });
 
-    return users;
-}
+        return users;
+    } catch (error) {
+        console.error("Error getting users:", error);
+        throw error;
+    }
+};
 
-export const addUser = async (userId) => {
-    const docRef = await addDoc(
-        collection(db, "users"), {
-            userId: userId
-        }
-    )
+export const createUser = async (userId) => {
+    try {
+        const docRef = await addDoc(collection(db, "users"), {
+            bio: "",
+        });
 
-    return docRef.id;
+        return docRef.id;
+    } catch (error) {
+        console.error("Error creating user:", error);
+        throw error;
+    }
 }
