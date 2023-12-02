@@ -1,89 +1,175 @@
 "use client";
 
-import {
-    useState,
-    useEffect
-} from "react";
-
 import { useUserAuth } from "../_utils/auth-context";
+import { useStyling } from "../_utils/styling-context";
+
+import Heading from "../components/texts/Heading";
+import Subheading from "../components/texts/Subheading";
+import Text from "../components/texts/Text";
+import Subtext from "../components/texts/Subtext";
+import Post from "../components/Post";
+import { useEffect, useState } from "react";
 
 import {
-    getAllUsers,
-    createUser
+    getAllPosts
 } from "../_services/database-service"
 
-import Login from "../components/Login";
-import ProfilePage from "../components/ProfilePage";
-import Signout from "../components/Signout";
-import Post from "../components/Post";
-
 export default function LandingPage() {
-    const [users, setUsers] = useState([]);
+    const { user, firebaseSignOut } = useUserAuth();
+    const { subheadingSize, subheadingWeight, textSize, textWeight, subtextSize, subtextWeight } = useStyling();
 
-    const { user } = useUserAuth();
+    const [posts, setPosts] = useState([]);
 
-    const loadUsers = async () => {
-        const data = await fetchUsers();
-        setUsers(data);
+    const loadPosts = async () => {
+        try {
+            console.log("Fetching posts");
+            const posts = await getAllPosts();
+
+            setPosts(posts);
+        } catch (error) {
+            console.log("Error loading posts", error);
+        }
     }
 
-    const handleOnClick = () => {
-        loadUsers();
+    useEffect(
+        () => {
+            loadPosts();
+        }, [user]
+    )
+
+    const [allowAddPost, setAllowAddPost] = useState(true);
+
+    const handleSignOut = () => {
+        firebaseSignOut();
     }
 
-    const debugButton = () => {
-        console.log("debug button clicked");
-        createUser(user.uid);
+    const handleOnAllowAddPostButtonClick = () => {
+        setAllowAddPost(false);
+    }
 
+    const handleOnAddPost = () => {
+        setAllowAddPost(true);
+    }
+
+    const handleOnPostButtonCloseClick = () => {
+        setAllowAddPost(true);
+    }
+
+    const handleOnPostHide = (post) => {
+        console.log(post);
+        setPosts(posts.filter((currentPost) => currentPost.docId != post.docId))
+    }
+
+    const NavBarButton = ({children, onClick}) => {
+        const handleOnClick = () => {
+            if (onClick) onClick();
+        }
+
+        return (
+            <button className={`text-black ${subtextSize} ${subtextWeight} bg-gray-200 px-8 py-2 active-bg-white rounded-2xl hover:bg-[#FEFAE0]`}
+                    onClick={handleOnClick}>
+                        {children}
+            </button>
+        )
+    }
+
+    const handleDebug = () => {
+        console.log(posts);
+        // getAllPosts();
     }
 
     return (
-        <main>
-            <button className="p-8 bg-slate-800 hover:bg-slate-700 active:bg-slate-800"
-                    onClick={debugButton}>
-                debug button
-            </button>
-            <div className="flex align-middle text-center">
-                <div className="flex  flex-col flex-1 mt-auto mb-auto py-20 px-8 gap-8">
-                    <p>This is a login/signout component</p>
-                    {!user &&
-                        <div>
-                            <Login onClick={handleOnClick}/>
-                        </ div>
-                    }
+        <div className="min-h-screen flex flex-col gap-4">
+            <header className="flex justify-between border-b-2 py-2 px-4 mt-0">
+                <NavBarButton>Home</ NavBarButton>
+                <NavBarButton onClick={handleDebug}>Debug</ NavBarButton>
+                <div className="flex flex-row gap-5">
+                    <NavBarButton>Settings</ NavBarButton>
+                    <NavBarButton onClick={handleSignOut}>Sign out</ NavBarButton>
+                </div>
+            </header>
 
-                    {user && 
-                        <div className="flex justify-between">
-                            <p>{user.uid}</p>
-                            <div className="flex flex-row gap-2 border-gray-800 border p-2 rounded-xl bg-gray-950 mt-2 mb-2">
-                                
-                                <img src={user.photoURL} className="w-8 h-8 rounded-full mt-auto mb-auto" alt="User image"/>
-                                <div className="mt-auto mb-auto">
-                                    <p className="text-sm">{user.displayName}</p>
-                                    <p className="text-xs text-gray-400">{user.email}</p>
+            <main className="flex flex-col border-b-2 gap-8 pb-2">
+                <div className="mx-4">
+                    {allowAddPost &&
+                        <section className="flex flex-row bg-gray-300 p-4 rounded-2xl gap-4">
+                            <img src={user.photoURL} 
+                                    alt="User image" 
+                                    width={60}
+                                    height={60}
+                                    className="rounded-full border-2 border-gray-500"/>
+                            <div className="bg-white text-center rounded-2xl hover:bg-[#FEFAE0] hover:cursor-pointer active:bg-white w-full">
+                                <button className={`text-black ${textSize} ${textWeight} p-4 w-full rounded-2xl`}
+                                        onClick={handleOnAllowAddPostButtonClick}>
+                                    Add a post
+                                </button>
+                            </div>
+                        </section>
+                    }
+                    {!allowAddPost &&
+                        <section className="flex flex-col bg-gray-300 p-4 rounded-2xl gap-4">
+                            <div className="flex flex-row justify-between border-b-2 pb-4">
+                                <div className="flex flex-row gap-4">
+                                    <img src={user.photoURL} 
+                                            alt="User image" 
+                                            width={60}
+                                            height={60}
+                                            className="rounded-full border-2 border-gray-500"/>
+                                    <div className="my-auto">
+                                        <Text>{user.displayName}</Text>
+                                        <Subtext>{user.email}</Subtext>
+                                    </div>
+                                </div>
+                                <div className="my-auto">
+                                    <button className={`text-black ${textSize} ${textWeight} py-4 px-5 rounded-2xl hover:bg-[#FEFAE0] active:bg-white`}
+                                            onClick={handleOnPostButtonCloseClick}>
+                                        X
+                                    </button>
                                 </div>
                             </div>
-                            <div className="mt-auto mb-auto">
-                                <Signout />
-                            </div>
-                            </div>
-                    }
-                    {user &&
-                        <div>
-                            <p>this is a profile component</p>
-                            <ProfilePage />
-                        </ div>
-                    }
+                            <div className="flex flex-col justify-center text-center gap-4">
+                                <Subheading>Create a post</Subheading>
+                                <input type="text"
+                                    placeholder="What do you want to share?"
+                                    className={`rounded-2xl p-4 text-black ${subtextSize} ${subtextWeight}`}/>
 
-                    {user &&
-                        <div>
-                            <p>This is a post component</p>
-                            <Post user={user}/>
-                        </ div>
-                    }
-                    
+                                <div className="bg-white text-center rounded-2xl hover:bg-[#FEFAE0] hover:cursor-pointer active:bg-white w-full">
+                                    <button className={`text-black ${textSize} ${textWeight} p-4 w-full rounded-2xl`}
+                                            onClick={handleOnAddPost}>
+                                        Add post
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
+                    }      
                 </div>
-            </div>
-        </main>
+
+                <div className="flex flex-col gap-6 mx-4">
+                    <Heading>Discover</Heading>
+                    <section className="flex flex-col gap-2">
+                        <Subheading>Posts</Subheading>
+
+                        {posts &&
+                            posts.map(
+                                (post) => (
+                                    <Post post={post} key={post.docId} onPostHide={handleOnPostHide}/>
+                                )
+                            )
+                        }
+
+                        {!posts &&
+                            <Subheading>There are currently no posts available...</Subheading>
+                        }
+                    </section>
+
+                    <section className="flex flex-col gap-2">
+                        <Subheading>Users</Subheading>
+                    </section>
+                </div>
+            </main>
+            <footer className="mb-0 mt-auto text-center">
+                <Subtext>You've reached the end of the page.</Subtext>
+            </footer>
+        </div>
     )
 }
