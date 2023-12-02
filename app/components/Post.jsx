@@ -1,40 +1,43 @@
+"use client";
 
-{/* <img src={user.photoURL} className="w-8 h-8 rounded-full mt-auto mb-auto" alt="User image"/>
-<div className="mt-auto mb-auto">
-    <p className="text-sm">{user.displayName}</p>
-    <p className="text-xs text-gray-400">{user.email}</p>
-</div> */}
+import Text from "./texts/Text";
+import Subtext from "./texts/Subtext";
 
-export default function Post( {user} ) {
+import {
+    useStyling
+} from "../_utils/styling-context"
+
+export default function Post( {post, onPostHide} ) {
+    const { textSize, textWeight } = useStyling();
+    
+    const handleOnPostHide = () => {
+        if (onPostHide) onPostHide(post);
+    }
+
     return (
-        <div className="flex border-2 flex-col bg-gray-950 p-2 gap-4">
-
-            <div className="flex justify-between border-b-2 pb-2 border-gray-500">
-                <div className="flex flex-row gap-3">
-                    <img src={user.photoURL} 
-                         alt="User image" 
-                         width={100}
-                         height={100}
-                         className="rounded-full border-2 border-gray-500"/>
-                    <div className="mb-auto mt-2 text-left">
-                        <p className="text-xl">{user.displayName}</p>
-                        <p className="text-lg text-gray-500">11/27/2023</p>
+        <section className="flex flex-col bg-gray-300 p-4 rounded-2xl gap-4">
+            <div className="flex flex-row justify-between border-b-2 pb-4">
+                <div className="flex flex-row gap-4 p-2 px-4 bg-gray-200 hover:bg-[#FEFAE0] rounded-2xl hover:cursor-pointer">
+                    <img src={post.data.photoURL} 
+                            alt="User image" 
+                            width={60}
+                            height={60}
+                            className="rounded-full border-2 border-gray-500"/>
+                    <div className="my-auto">
+                        <Text>{post.data.displayName}</Text>
+                        <Subtext>{post.data.timePosted}</Subtext>
                     </div>
                 </div>
-                <div className="flex flex-row gap-2 mb-auto text-2xl">
-                    <button>
-                        ...
-                    </button>
-                    <button>
+                <div className="my-auto">
+                    <button className={`text-black ${textSize} ${textWeight} py-6 px-7 rounded-2xl hover:bg-[#FEFAE0] active:bg-white`}
+                            onClick={handleOnPostHide}>
                         X
                     </button>
                 </div>
             </div>
             <div>
-                <p className="text-left">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit voluptatem sequi similique aut. Necessitatibus dicta corrupti quam nesciunt deleniti dolor, magnam eaque dolores, porro natus aliquid veniam, excepturi blanditiis officia.
-                </p>
+                <Subtext>{post.data.contents}</Subtext>
             </div>
-        </div>
-    )
+        </section>
+    );
 }
