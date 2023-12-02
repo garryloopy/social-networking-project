@@ -9,18 +9,17 @@ export const metadata = {
 }
 
 import { AuthContextProvider } from "./_utils/auth-context";
- 
-const Layout = ({ children }) => {
-  return <AuthContextProvider>{children}</AuthContextProvider>;
-};
+import { StylingContextProvider } from './_utils/styling-context';
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Layout>
-          {children}
-        </Layout>
+        <AuthContextProvider>
+          <StylingContextProvider>  
+            {children}
+          </StylingContextProvider>
+        </AuthContextProvider>
       </body>
     </html>
   )
