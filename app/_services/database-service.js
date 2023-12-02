@@ -1,10 +1,10 @@
 import { db } from "../_utils/firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore";
 
-export const createPost = async ({post}) => {
+export const createPost = async (post) => {
     try {
-        const docRef = await addDoc(collection(db, "users"), {
-            userId: post.uid,
+        const docRef = await addDoc(collection(db, "posts"), {
+            userId: post.userId,
             photoURL: post.photoURL,
             displayName: post.displayName,
             timePosted: post.timePosted,
