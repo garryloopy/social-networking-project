@@ -11,7 +11,8 @@ import Post from "../components/Post";
 import { useEffect, useState } from "react";
 
 import {
-    getAllPosts
+    getAllPosts,
+    createPost
 } from "../_services/database-service"
 
 export default function LandingPage() {
@@ -19,6 +20,8 @@ export default function LandingPage() {
     const { subheadingSize, subheadingWeight, textSize, textWeight, subtextSize, subtextWeight } = useStyling();
 
     const [posts, setPosts] = useState([]);
+
+    const [postContents, setPostContents] = useState("");
 
     const loadPosts = async () => {
         try {
@@ -47,7 +50,54 @@ export default function LandingPage() {
         setAllowAddPost(false);
     }
 
+    const generatePostObj = () => {
+        const timePosted = getTimePosted();
+
+        const postObj = {
+            userId: user.uid,
+            photoURL: user.photoURL,
+            displayName: user.displayName,
+            timePosted: timePosted,
+            contents: postContents
+        }
+
+        return postObj;
+    }
+
+    const getTimePosted = () => {
+        // Create a new Date object
+        var currentDate = new Date();
+
+        // Get individual components of the date
+        var year = currentDate.getFullYear();
+        var month = currentDate.getMonth() + 1; // Months are zero-based, so add 1
+        var day = currentDate.getDate();
+
+
+        return year + "-" + month + "-" + day;
+
+    }
+
+    const handleAddPost = async () => {
+        const postObj = generatePostObj();
+
+        const docRef = await createPost(postObj);
+
+        setPosts(
+            [...posts,
+                {
+                    docId: docRef,
+                    data: postObj
+                }
+            ]
+        )
+
+        setPostContents("");
+    }
+
     const handleOnAddPost = () => {
+        handleAddPost();
+
         setAllowAddPost(true);
     }
 
@@ -56,7 +106,6 @@ export default function LandingPage() {
     }
 
     const handleOnPostHide = (post) => {
-        console.log(post);
         setPosts(posts.filter((currentPost) => currentPost.docId != post.docId))
     }
 
@@ -131,7 +180,9 @@ export default function LandingPage() {
                                 <Subheading>Create a post</Subheading>
                                 <input type="text"
                                     placeholder="What do you want to share?"
-                                    className={`rounded-2xl p-4 text-black ${subtextSize} ${subtextWeight}`}/>
+                                    className={`rounded-2xl p-4 text-black ${subtextSize} ${subtextWeight}`}
+                                    value={postContents}
+                                    onChange={(change) => setPostContents(change.target.value)}/>
 
                                 <div className="bg-white text-center rounded-2xl hover:bg-[#FEFAE0] hover:cursor-pointer active:bg-white w-full">
                                     <button className={`text-black ${textSize} ${textWeight} p-4 w-full rounded-2xl`}
