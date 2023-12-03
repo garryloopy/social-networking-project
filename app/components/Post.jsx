@@ -31,7 +31,7 @@ export default function Post( {post, onPostHide} ) {
                 <div className="my-auto">
                     <button className={`text-black ${textSize} ${textWeight} py-6 px-7 rounded-2xl hover:bg-[#FEFAE0] active:bg-white`}
                             onClick={handleOnPostHide}>
-                        X
+                        Hide
                     </button>
                 </div>
             </div>
