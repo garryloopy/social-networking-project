@@ -50,10 +50,10 @@ export const getAllUsers = async () => {
 
         let users = [];
 
-        querySnapshot.forEach((doc) => { console.log(doc.id) });
         querySnapshot.forEach((doc) => {
             users.push({
-                userId: doc.id,
+                docId: doc.id,
+                userInfo: doc.data()
             });
         });
 
@@ -64,10 +64,13 @@ export const getAllUsers = async () => {
     }
 };
 
-export const createUser = async (userId) => {
+export const createUser = async (user, bio) => {
     try {
         const docRef = await addDoc(collection(db, "users"), {
-            bio: "",
+            userId: user.uid,
+            photoURL: user.photoURL,
+            displayName: user.displayName,
+            bio: bio,
         });
 
         return docRef.id;
