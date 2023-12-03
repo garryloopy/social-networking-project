@@ -1,22 +1,23 @@
 "use client";
 
-import LoginPage from "./pages/LoginPage";
-import LandingPage from "./pages/LandingPage";
+import LoginPage from "./pages/LoginPage/page";
 
 import {
   useUserAuth
 } from "./_utils/auth-context"
 
+import { useEffect } from "react";
+
 export default function Page() {
-  const { user } = useUserAuth();
+  const { user, firebaseSignOut } = useUserAuth();
+
+  const handleSignOut = () => {
+    firebaseSignOut();
+  }
+
   return (
     <div>
-      {!user &&
         <LoginPage />
-      }
-      {user &&
-        <LandingPage />
-      }
     </div>
   )
 }
