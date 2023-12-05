@@ -1,9 +1,21 @@
 import { db } from "../_utils/firebase";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDocs, getDoc, addDoc, doc } from "firebase/firestore";
+
+export const getUserByDocId = async (docId) => {
+    try {
+        const docRef = doc(db, "users", docId);
+        const docSnap = await getDoc(docRef);
+
+        return docSnap.data();
+    } catch (error) {
+        console.log("Error fetching user", error);
+    }
+}
 
 export const createPost = async (post) => {
     try {
         const docRef = await addDoc(collection(db, "posts"), {
+            userDocId: post.userDocId,
             userId: post.userId,
             photoURL: post.photoURL,
             displayName: post.displayName,
