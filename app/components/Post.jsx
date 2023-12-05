@@ -4,39 +4,50 @@ import Text from "./texts/Text";
 import Subtext from "./texts/Subtext";
 
 import {
-    useStyling
+    useStyling,
 } from "../_utils/styling-context"
 
-export default function Post( {post, onPostHide} ) {
+import {
+    useState
+} from "react";
+
+export default function Post( {post} ) {
     const { textSize, textWeight } = useStyling();
-    
+
+    const [hidden, setHidden] = useState(false);    
+
     const handleOnPostHide = () => {
-        if (onPostHide) onPostHide(post);
+        setHidden(!hidden);
     }
 
     return (
-        <section className="flex flex-col bg-gray-300 p-4 rounded-2xl gap-4">
-            <div className="flex flex-row justify-between border-b-2 pb-4">
-                <div className="flex flex-row gap-4 p-2 px-4 bg-gray-200 hover:bg-[#FEFAE0] rounded-2xl hover:cursor-pointer">
+        <section className={`flex flex-col bg-gray-50 px-4 pt-4 rounded-sm ${!hidden ? "gap-4 pb-4" : ""}`}>
+            <div className={`flex flex-row justify-between ${!hidden ? "border-b-2" : ""} pb-4`}>
+                <div className="flex flex-row gap-4 p-2 px-4 bg-gray-300 hover:bg-gray-400 active:bg-gray-300 rounded-sm hover:cursor-pointer">
                     <img src={post.data.photoURL} 
                             alt="User image" 
                             width={60}
                             height={60}
-                            className="rounded-full border-2 border-gray-500"/>
+                            className="rounded-full border-2 border-gray-400"/>
                     <div className="my-auto">
                         <Text>{post.data.displayName}</Text>
                         <Subtext>{post.data.timePosted}</Subtext>
                     </div>
                 </div>
                 <div className="my-auto">
-                    <button className={`text-black ${textSize} ${textWeight} py-6 px-7 rounded-2xl hover:bg-[#FEFAE0] active:bg-white`}
+                    <button className={`text-black ${textSize} ${textWeight} bg-gray-300 py-6 px-7 rounded-sm hover:bg-gray-400 active:bg-gray-300`}
                             onClick={handleOnPostHide}>
-                        Hide
+                        {
+                            hidden ? "Show"
+                            : "Hide"
+                        }
                     </button>
                 </div>
             </div>
             <div>
-                <Subtext>{post.data.contents}</Subtext>
+                {!hidden && 
+                    <Subtext>{post.data.contents}</Subtext>
+                }
             </div>
         </section>
     );
