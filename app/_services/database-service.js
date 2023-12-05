@@ -64,13 +64,13 @@ export const getAllUsers = async () => {
     }
 };
 
-export const createUser = async (user, bio) => {
+export const createUser = async (user, contents) => {
     try {
         const docRef = await addDoc(collection(db, "users"), {
             userId: user.uid,
             photoURL: user.photoURL,
-            displayName: user.displayName,
-            bio: bio,
+            displayName: contents.nameContents,
+            bio: contents.bioContents,
         });
 
         return docRef.id;
