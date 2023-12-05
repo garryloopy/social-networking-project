@@ -109,10 +109,6 @@ export default function Main() {
       setAllowAddPost(true);
     };
 
-    const debug = () => {
-      console.log(availablePosts);
-    }
-
     return (
         <main className="flex flex-col px-20 border-b-2 gap-8 pb-2">
         <div className="mx-4">
@@ -129,8 +125,6 @@ export default function Main() {
             />
           )}
         </div>
-
-        <p onClick={debug}>DEBUG</p>
 
         <div className="flex flex-col gap-12 mx-4">
           <div className="border-b-2 pb-2 border-gray-50">
