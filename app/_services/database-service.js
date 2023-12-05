@@ -1,5 +1,67 @@
 import { db } from "../_utils/firebase";
-import { collection, getDocs, getDoc, addDoc, doc } from "firebase/firestore";
+import { collection, getDocs, getDoc, addDoc, doc, query, where } from "firebase/firestore";
+
+
+export const getUserPostsByUserId = async (userId) => {
+    try {
+        const q = query(
+            collection(db, "posts"),
+            where("userId", "==", userId)
+        );
+
+        const querySnapshot = await getDocs(q);
+
+        let posts = [];
+
+        querySnapshot.forEach((doc) => {
+            posts.push({
+                docId: doc.id,
+                data: doc.data(),
+            });
+        });
+
+        return posts;
+    } catch (error) {
+        console.error("Error getting posts:", error);
+        throw error;
+    }
+};
+
+
+
+
+export const getUserDocIdByUserId = async (userId) => {
+    const q = query(
+        collection(db, "users"),
+        where("userId", "==", userId)
+    );
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+        const docId = querySnapshot.docs[0].id;
+        return docId;
+    } else {
+        // Handle the case where no user is found with the given userId
+        return null;
+    }
+}
+
+export const getUserByUserId = async (userId) => {
+    const q = query(
+        collection(db, "users"),
+        where("userId", "==", userId)
+    );
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+        const data = querySnapshot.docs[0].data();
+        return data;
+    } else {
+        // Handle the case where no user is found with the given userId
+        return null;
+    }
+}
+
 
 export const getUserByDocId = async (docId) => {
     try {
