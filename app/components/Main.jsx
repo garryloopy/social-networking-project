@@ -13,7 +13,7 @@ import {
 import Heading from "./texts/Heading";
 import Subheading from "./texts/Subheading";
 import Post from "./Post";
-import Text from "./texts/Text";
+import Subtext from "./texts/Subtext";
 import CreatePostFormSection from "./sections/CreatePostFormSection";
 import CreatePostSection from "./sections/CreatePostSection";
 
@@ -81,7 +81,6 @@ export default function Main() {
     };
   
     const handleOnAddPost = async (postObj) => {
-      console.log(postObj);
       const newPostObj = {
         ...postObj,
         userDocId: currentUser.docId
@@ -98,10 +97,7 @@ export default function Main() {
             userDocId: currentUser.docId
           }
         },
-      ]);
-
-      console.log(availablePosts);
-  
+      ]);  
       setAllowAddPost(true);
     };
   
@@ -139,9 +135,9 @@ export default function Main() {
               ))}
 
             {availablePosts.length <= 0 && (
-              <Text>
+              <Subtext>
                 There are currently no posts available... why not add some?
-              </Text>
+              </Subtext>
             )}
           </section>
 
