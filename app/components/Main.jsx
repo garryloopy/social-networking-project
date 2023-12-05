@@ -81,15 +81,26 @@ export default function Main() {
     };
   
     const handleOnAddPost = async (postObj) => {
-      const docRef = await createPost(postObj);
+      console.log(postObj);
+      const newPostObj = {
+        ...postObj,
+        userDocId: currentUser.docId
+      }
+
+      const docRef = await createPost(newPostObj);
   
       setAvailablePosts([
         ...availablePosts,
         {
           docId: docRef,
-          data: postObj,
+          data: {
+            ...postObj,
+            userDocId: currentUser.docId
+          }
         },
       ]);
+
+      console.log(availablePosts);
   
       setAllowAddPost(true);
     };
@@ -97,6 +108,10 @@ export default function Main() {
     const handleOnPostButtonCloseClick = () => {
       setAllowAddPost(true);
     };
+
+    const debug = () => {
+      console.log(availablePosts);
+    }
 
     return (
         <main className="flex flex-col px-20 border-b-2 gap-8 pb-2">
@@ -115,6 +130,8 @@ export default function Main() {
           )}
         </div>
 
+        <p onClick={debug}>DEBUG</p>
+
         <div className="flex flex-col gap-12 mx-4">
           <div className="border-b-2 pb-2 border-gray-50">
             <Heading>Discover</Heading>
@@ -127,7 +144,7 @@ export default function Main() {
                 <Post post={post} key={post.docId} />
               ))}
 
-            {availablePosts.length === 0 && (
+            {availablePosts.length <= 0 && (
               <Text>
                 There are currently no posts available... why not add some?
               </Text>
