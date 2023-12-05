@@ -1,6 +1,7 @@
 "use client";
 
 import { useUserAuth } from "../_utils/auth-context";
+
 import Subheading from "./texts/Subheading";
 
 export default function Login( {onClick} ) {
@@ -24,9 +25,9 @@ export default function Login( {onClick} ) {
                  height={60}
                  className="rounded-sm flex-0"/>
             
-            <p className="mt-auto mb-auto flex-1 text-black font-medium text-3xl">
-                Login with GitHub
-            </p>
+            <div className="mt-auto mb-auto flex-1">
+                <Subheading>Login with GitHub</Subheading>
+            </div>
         </section>
     )
 }
