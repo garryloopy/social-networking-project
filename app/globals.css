@@ -18,5 +18,5 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: white; /* Set a solid white background */
+  background: #d1d5db; 
 }
