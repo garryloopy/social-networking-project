@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 
+import Subheading from './texts/Subheading';
+
 export default function Continue( {onClick} ) {
     const handleOnButtonClick = async () => {
         if (onClick)
@@ -13,9 +15,9 @@ export default function Continue( {onClick} ) {
               onClick={handleOnButtonClick}
               href="../pages/Home">
             
-            <p className="mt-auto mb-auto flex-1 text-black font-medium text-3xl text-center">
-                Continue
-            </p>
+            <div className="mt-auto mb-auto flex-1 text-black text-center">
+                <Subheading>Continue</Subheading>
+            </div>
         </Link>
     )
 }
