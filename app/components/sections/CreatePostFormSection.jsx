@@ -79,7 +79,7 @@ export default function CreatePostFormSection ({onClose, currentUser, onAddPost}
       }
 
     return (
-        <section className="flex flex-col bg-gray-50 p-4 rounded-sm gap-4">
+        <section className="flex flex-col bg-gray-50 p-4 rounded-sm gap-4 shadow-2xl">
         <div className="flex flex-row justify-between border-b-2 pb-4">
           <div className="flex flex-row gap-4">
             <img
@@ -96,7 +96,7 @@ export default function CreatePostFormSection ({onClose, currentUser, onAddPost}
           </div>
           <div className="my-auto">
             <button
-              className={`bg-gray-300 text-black ${textSize} ${textWeight} py-4 px-5 rounded-sm hover:bg-gray-400 active:bg-white`}
+              className={`bg-gray-300 text-black ${textSize} ${textWeight} py-4 px-5 rounded-sm hover:bg-gray-400 active:bg-white shadow-md`}
               onClick={onClose}
             >
               X
@@ -109,13 +109,13 @@ export default function CreatePostFormSection ({onClose, currentUser, onAddPost}
             <input
                 type="text"
                 placeholder="What do you want to share?"
-                className={`rounded-sm py-4 bg-gray-300 px-2 border-2 text-black border-gray-300 ${subtextSize} ${subtextWeight}`}
+                className={`rounded-sm py-4 bg-gray-300 px-2 border-2 text-black border-gray-300 ${subtextSize} ${subtextWeight} shadow-md`}
                 value={postContents}
                 onChange={(change) => setPostContents(change.target.value)}
             />
           </div>
 
-          <div className="bg-gray-300 text-center rounded-sm hover:bg-gray-400 hover:cursor-pointer active:bg-gray-300 w-full">
+          <div className="bg-gray-300 text-center rounded-sm hover:bg-gray-400 hover:cursor-pointer active:bg-gray-300 w-full shadow-md">
             <button
               className={`text-black ${subtextSize} ${subtextWeight} p-4 w-full rounded-sm`}
               onClick={handleOnAddPost}

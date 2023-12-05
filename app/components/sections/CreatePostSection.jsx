@@ -14,7 +14,7 @@ export default function CreatePostSection({onAllowAddPostButtonClick}) {
     const { user } = useUserAuth();
 
     return (
-        <section className="flex flex-row bg-gray-50 p-4 rounded-sm gap-4">
+        <section className="flex flex-row bg-gray-50 p-4 rounded-sm gap-4 shadow-2xl">
             <img
             src={user.photoURL}
             alt="User image"
@@ -24,7 +24,7 @@ export default function CreatePostSection({onAllowAddPostButtonClick}) {
             />
             <div className="bg-gray-300 text-center rounded-sm hover:bg-gray-400 hover:cursor-pointer active:bg-gray-300 w-full">
             <button
-                className={`text-black ${textSize} ${textWeight} p-4 w-full rounded-sm`}
+                className={`text-black ${textSize} ${textWeight} p-4 w-full rounded-sm shadow-md`}
                 onClick={onAllowAddPostButtonClick}
             >
                 Add a post

@@ -14,9 +14,9 @@ export default function Login( {onClick} ) {
     }
     
     return (
-        <section className="bg-[#606C38] p-2 flex justify-between gap-5 border-2 rounded-sm
-                            hover:bg-[#283618] hover:text-white active cursor-pointer 
-                            active:bg-[#606C38]"
+        <section className="bg-gray-400 p-2 flex justify-between gap-5 rounded-sm
+                            hover:bg-gray-500 hover:text-white active cursor-pointer 
+                            active:bg-gray-400 shadow-2xl"
                  onClick={handleOnButtonClick}>
             <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" 
                  alt="Github logo" 
@@ -24,7 +24,7 @@ export default function Login( {onClick} ) {
                  height={60}
                  className="rounded-sm flex-0"/>
             
-            <p className="mt-auto mb-auto flex-1 text-gray-100 font-medium text-3xl">
+            <p className="mt-auto mb-auto flex-1 text-black font-medium text-3xl">
                 Login with GitHub
             </p>
         </section>

@@ -96,20 +96,11 @@ export default function Page() {
     createNewUser(user, contents);
   }
 
-  const debug = () => {
-    console.log(availableUsers);
-  }
-
 
   return (
     <div className="flex flex-col justify-center flex-1 min-h-screen items-center">
       <div className="flex-1 flex justify-center items-center">
         <Heading>Welcome to ConnectHub</Heading>
-
-        <div className="px-8 hover:bg-slate-400 hover:cursor-pointer"
-             onClick={debug}>
-          <Heading>Debug</Heading>
-        </div>
         
       </div>
       <div className="flex flex-1 flex-col justify-start items-start">

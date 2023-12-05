@@ -116,7 +116,9 @@ export default function Main() {
         </div>
 
         <div className="flex flex-col gap-12 mx-4">
-          <Heading>Discover</Heading>
+          <div className="border-b-2 pb-2 border-gray-50">
+            <Heading>Discover</Heading>
+          </div>
           <section className="flex flex-col gap-2">
             <Subheading>Posts</Subheading>
 

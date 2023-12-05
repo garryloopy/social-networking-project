@@ -15,9 +15,9 @@ export default function User( {user, onUserHide} ) {
     }
 
     return (
-        <section className="flex flex-col bg-gray-50 p-4 rounded-sm gap-4">
+        <section className="flex flex-col bg-gray-50 p-4 rounded-sm gap-4 shadow-2xl">
             <div className="flex flex-row justify-between">
-                <div className="flex flex-row gap-4 p-2 px-4 bg-gray-300 hover:bg-gray-400 active:bg-gray-300 rounded-sm hover:cursor-pointer">
+                <div className="flex flex-row gap-4 p-2 px-4 bg-gray-300 hover:bg-gray-400 active:bg-gray-300 rounded-sm hover:cursor-pointer shadow-md">
                     <img src={user.userInfo.photoURL} 
                             alt="User image" 
                             width={60}
