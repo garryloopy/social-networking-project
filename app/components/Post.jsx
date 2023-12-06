@@ -43,7 +43,7 @@ export default function Post( {post} ) {
                                 alt="User image" 
                                 width={60}
                                 height={60}
-                                className={`py-4 px-2 rounded-lg hover:cursor-pointer bg-gray-100`}
+                                className={`py-2 my-2 px-2 rounded-lg hover:cursor-pointer hover:bg-gray-300  active:bg-gray-400`}
                                 onClick={handleOnPostHide}/>
 
             </div>
