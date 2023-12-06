@@ -20,18 +20,17 @@ export default function User( {user, onUserHide} ) {
     }
 
     return (
-        <section className="flex flex-col bg-gray-50 p-4 rounded-sm gap-4 shadow-2xl">
-            <div className="flex flex-row justify-between">
+        <section className="flex flex-col bg-gray-50 p-1 max-w-xs rounded-sm gap-4 shadow-2xl">
+            <div>
                 <Link href={`users/${user.docId}`}>
                     <div className="flex flex-row gap-4 p-2 px-4 bg-gray-300 hover:bg-gray-400 active:bg-gray-300 rounded-sm hover:cursor-pointer shadow-md" onClick={debug}>
                         <img src={user.userInfo.photoURL} 
                                 alt="User image" 
-                                width={60}
-                                height={60}
+                                width={30}
+                                height={30}
                                 className="rounded-full border-2 border-gray-500"/>
                         <div className="my-auto">
                             <Text>{user.userInfo.displayName}</Text>
-                            <Subtext>{user.userInfo.bio}</Subtext>
                         </div>
                     </div>
                 </Link>

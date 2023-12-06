@@ -9,7 +9,6 @@ export default function UserPage({params}) {
     <div className="min-h-screen flex flex-col gap-4">
       <Header/>
       <Profile docId={params.id} />
-
       <Footer />
     </div>
   );

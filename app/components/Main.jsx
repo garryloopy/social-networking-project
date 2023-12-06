@@ -123,38 +123,42 @@ export default function Main() {
         </div>
 
         <div className="flex flex-col gap-12 mx-4">
-          <div className="border-b-2 pb-2 border-gray-50">
+          <div className="border-b-2 pb-2 flex-1  border-gray-50">
             <Heading>Discover</Heading>
           </div>
-          <section className="flex flex-col gap-2">
-            <Subheading>Posts</Subheading>
+          <div className="flex flex-row flex-1 gap-40 justify-end">
+            <section className="flex flex-col flex-1 gap-2">
+              <Subheading>Posts</Subheading>
 
-            {availablePosts &&
-              availablePosts.map((post) => (
-                <Post post={post} key={post.docId} />
-              ))}
-
-            {availablePosts.length <= 0 && (
-              <Subtext>
-                There are currently no posts available... why not add some?
-              </Subtext>
-            )}
-          </section>
-
-          <section className="flex flex-col gap-2">
-            <Subheading>Users</Subheading>
-            {availableUsers &&
-              user &&
-              availableUsers
-                .filter(
-                  (currentUser) => currentUser.userInfo.userId !== user.uid
-                )
-                .map((currentUser) => (
-                  <div key={currentUser.userInfo.userId}>
-                    <User user={currentUser} />
-                  </div>
+              {availablePosts &&
+                availablePosts.map((post) => (
+                  <Post post={post} key={post.docId} />
                 ))}
-          </section>
+
+              {availablePosts.length <= 0 && (
+                <Subtext>
+                  There are currently no posts available... why not add some?
+                </Subtext>
+              )}
+            </section>
+
+            <section className="flex flex-col gap-2">
+              <Subheading>Users</Subheading>
+              <div className="flex bg-gray-50 p-2">
+              {availableUsers &&
+                user &&
+                availableUsers
+                  .filter(
+                    (currentUser) => currentUser.userInfo.userId !== user.uid
+                  )
+                  .map((currentUser) => (
+                    <div key={currentUser.userInfo.userId}>
+                      <User user={currentUser} />
+                    </div>
+                  ))}
+              </div>
+            </section>
+          </div>
         </div>
       </main>
     )
