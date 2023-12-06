@@ -144,7 +144,7 @@ export default function Main() {
 
             <section className="flex flex-col gap-2">
               <Subheading>Users</Subheading>
-              <div className="flex bg-gray-50 p-2">
+              <div className="flex flex-col flex-1 bg-gray-50 p-2">
               {availableUsers &&
                 user &&
                 availableUsers
