@@ -38,16 +38,14 @@ export default function Post( {post} ) {
                         </div>
                     </div>
                 </Link>
-                
-                <div className="my-auto">
 
                 <img src={hidden ? "https://cdn-icons-png.flaticon.com/128/4298/4298899.png" : "https://cdn-icons-png.flaticon.com/128/565/565655.png"} 
                                 alt="User image" 
-                                width={100}
-                                height={100}
-                                className={`text-black ${textSize} ${textWeight} bg-gray-300 py-6 px-7 rounded-xl hover:bg-gray-400 active:bg-gray-300 shadow-md`}
+                                width={60}
+                                height={60}
+                                className={`py-4 px-2 rounded-lg hover:cursor-pointer bg-gray-100`}
                                 onClick={handleOnPostHide}/>
-                </div>
+
             </div>
             <div>
                 {!hidden && 
