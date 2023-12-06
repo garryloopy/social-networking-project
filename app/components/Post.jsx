@@ -23,7 +23,7 @@ export default function Post( {post} ) {
     }
 
     return (
-        <section className={`flex flex-col bg-gray-50 px-4 pt-4 rounded-md ${!hidden ? "gap-4 pb-4" : ""} shadow-2xl ` }>
+        <section className={`flex flex-col bg-gray-50 px-4 pt-4 rounded- ${!hidden ? "gap-4 pb-4" : ""} shadow-2xl min-h-fit` }>
             <div className={`flex flex-row justify-between ${!hidden ? "border-b-2" : ""} pb-4`}>
                 <Link href={`/pages/users/${post.data.userDocId}`}>
                     <div className="flex flex-row gap-4 p-2 px-4 bg-gray-300 hover:bg-gray-400 active:bg-gray-300 rounded-sm hover:cursor-pointer shadow-md">
