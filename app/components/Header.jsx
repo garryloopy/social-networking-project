@@ -73,7 +73,9 @@ export default function header() {
       </div>
       
       <div className="flex flex-row gap-5">
-        <NavBarButton>Settings</NavBarButton>
+        <Link href="/pages/Settings">
+          <NavBarButton>Settings</NavBarButton>
+        </Link>
         <Link href="/">
           <NavBarButton>Sign out</NavBarButton>
         </Link>
