@@ -54,7 +54,7 @@ export default function Profile({ docId }) {
   }, [user]);
 
   return (
-    <section className="flex flex-col gap-12 text-center bg-gray-300 justify-center items-center align-middle p-4 py-12 rounded-sm mx-24 shadow-2xl">
+    <section className="flex flex-col gap-12 text-center bg-gray-300 justify-center align-middle p-4 py-12 rounded-sm mx-24 shadow-2xl">
       {user && (
         <div className="flex flex-col items-center gap-8 border-b-2 w-full pb-4 border-gray-200">
           <img
