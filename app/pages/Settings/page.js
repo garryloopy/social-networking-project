@@ -20,6 +20,8 @@ import {
 } from "react"; 
 import Link from "next/link";
 
+import { useRouter } from "next/router";
+
 const Button = ({ children, onClick }) => {
     const {
         subheadingSize,
@@ -46,6 +48,8 @@ const Button = ({ children, onClick }) => {
 
 export default function Settings() {
     const { user } = useUserAuth();
+
+    const router = useRouter();
 
     const [userDoc, setUserDoc] = useState(null);
 
