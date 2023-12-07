@@ -14,7 +14,7 @@ export default function CreatePostSection({onAllowAddPostButtonClick}) {
     const { user } = useUserAuth();
 
     return (
-        <section className="flex flex-row bg-gray-50 p-4 rounded-sm gap-4 shadow-2xl">
+        <section className="flex flex-row bg-gray-50 p-4 rounded-md gap-4 shadow-2xl">
             <img
             src={user.photoURL}
             alt="User image"
