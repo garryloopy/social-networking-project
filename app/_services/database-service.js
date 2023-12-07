@@ -1,6 +1,44 @@
 import { db } from "../_utils/firebase";
-import { collection, getDocs, getDoc, addDoc, doc, query, where } from "firebase/firestore";
+import { collection, deleteDoc, getDocs, getDoc, addDoc, doc, query, where } from "firebase/firestore";
 
+export const deleteMultiplePosts = async (userId) => {
+    try {
+      // Step 1: Get posts by user ID
+      const posts = await getUserPostsByUserId(userId);
+  
+      // Step 2: Delete each post
+      const deletePromises = posts.map(async (post) => {
+        await deletePostByDocId(post.docId);
+      });
+  
+      // Wait for all deletion promises to resolve
+      await Promise.all(deletePromises);
+  
+      console.log("Multiple posts deleted successfully.");
+    } catch (error) {
+      console.error("Error deleting multiple posts", error);
+    }
+  };
+
+  export const deletePostByDocId = async (docId) => {
+    try {
+        const docRef = doc(db, "posts", docId);
+        await deleteDoc(docRef);
+    } catch (error) {
+        console.log("Error fetching user", error);
+    }
+    
+}
+
+export const deleteUserByDocId = async (docId) => {
+    try {
+        const docRef = doc(db, "users", docId);
+        const docSnap = await deleteDoc(docRef);
+    } catch (error) {
+        console.log("Error fetching user", error);
+    }
+    
+}
 
 export const getUserPostsByUserId = async (userId) => {
     try {
@@ -26,9 +64,6 @@ export const getUserPostsByUserId = async (userId) => {
         throw error;
     }
 };
-
-
-
 
 export const getUserDocIdByUserId = async (userId) => {
     const q = query(
@@ -153,3 +188,4 @@ export const createUser = async (user, contents) => {
         throw error;
     }
 }
+
