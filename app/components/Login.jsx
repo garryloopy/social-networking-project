@@ -23,7 +23,7 @@ export default function Login( {onClick} ) {
                  alt="Github logo" 
                  width={60}
                  height={60}
-                 className="rounded-sm flex-0"/>
+                 className="rounded-sm m-1"/>
             
             <div className="mt-auto mb-auto flex-1">
                 <Subheading>Login with GitHub</Subheading>
