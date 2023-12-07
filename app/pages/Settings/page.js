@@ -20,8 +20,6 @@ import {
 } from "react"; 
 import Link from "next/link";
 
-import { useRouter } from "next/router";
-
 const Button = ({ children, onClick }) => {
     const {
         subheadingSize,
@@ -47,9 +45,7 @@ const Button = ({ children, onClick }) => {
   };
 
 export default function Settings() {
-    const { user } = useUserAuth();
-
-    const router = useRouter();
+    const { user, firebaseSignOut } = useUserAuth();
 
     const [userDoc, setUserDoc] = useState(null);
 
@@ -73,6 +69,10 @@ export default function Settings() {
         try {
             await deleteUserByDocId(userDoc);
             await deleteMultiplePosts(user.uid);
+
+            await firebaseSignOut();
+
+            router.push("/");
         } catch (error) {
             console.log("Error deleting user", error);
         }
@@ -81,16 +81,24 @@ export default function Settings() {
 
   return (
     <div className="min-h-screen flex flex-col gap-4">
-      <Header/>
-      <main className="flex flex-col px-24 border-b-2 gap-8 pb-2">
-        <div className="flex flex-col gap-2">
-            <Text type="h2">Account</Text>
-            <div className="px-4">
-                    <Button onClick={handleDeleteAccount}>Delete account</Button>
+      {user && <Header/>}
+      {user && 
+        <main className="flex flex-col px-24 border-b-2 gap-8 pb-2">
+            <div className="flex flex-col gap-2">
+                <Text type="h2">Account</Text>
+                <div className="px-4">
+                        <Button onClick={handleDeleteAccount}>Delete account</Button>
+                </div>
             </div>
-        </div>
         </ main>
-      <Footer />
+      }
+      {user && <Footer />}
+
+      {!user && 
+        <Link href={"/"} className="flex justify-center align-middle mt-auto mb-auto">
+            <Button>BACK TO LOGIN PAGE</Button>
+        </Link>
+      }
     </div>
   );
 }

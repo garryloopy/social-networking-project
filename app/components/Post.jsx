@@ -22,8 +22,6 @@ export default function Post( {post} ) {
         setHidden(!hidden);
     }
 
-    // hidden ? "https://cdn-icons-png.flaticon.com/128/4298/4298899.png" : "https://cdn-icons-png.flaticon.com/128/565/565655.png"
-
     return (
         <section className={`flex flex-col bg-gray-50 px-4 pt-4 rounded- ${!hidden ? "gap-4 pb-4" : ""} shadow-2xl w-full` }>
             <div className={`flex flex-row justify-between ${!hidden ? "border-b-2" : ""} pb-4`}>
@@ -42,7 +40,7 @@ export default function Post( {post} ) {
                 </Link>
 
 
-                <img src={hidden ? "https://cdn-icons-png.flaticon.com/128/4298/4298899.png" : "https://cdn-icons-png.flaticon.com/128/8281/8281819.png"} 
+                <img src={hidden ? "https://cdn-icons-png.flaticon.com/128/4298/4298899.png" : "https://cdn-icons-png.flaticon.com/128/565/565655.png"} 
                                 alt="User image" 
                                 width={60}
                                 height={60}
