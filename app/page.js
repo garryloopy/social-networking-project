@@ -69,6 +69,8 @@ export default function Page() {
 
   useEffect(
     () => {
+      if (!user) return;
+
       loadUsers();
     }, [user]
   );
