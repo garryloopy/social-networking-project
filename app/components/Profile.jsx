@@ -75,7 +75,7 @@ export default function Profile({ docId }) {
           <h1 className="text-4xl font-bold text-black">Posts</h1>
           {availablePosts &&
             availablePosts.map((post) => (
-              <div key={post.docId}>
+              <div key={post.docId} className="text-left">
                 <Post post={post} />
               </div>
             ))
