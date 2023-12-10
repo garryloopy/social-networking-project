@@ -36,7 +36,7 @@ const Button = ({ children, onClick }) => {
 
     return (
       <button
-        className={`text-black ${subtextSize} ${subtextWeight} px-10 py-2 shadow-lg active:bg-gray-50 rounded-md hover:bg-gray-200 bg-gray-50`}
+        className={`text-black ${subtextSize} ${subtextWeight} px-10 py-2 shadow-lg active:bg-gray-50 rounded-md hover:bg-red-400 bg-gray-50`}
         onClick={handleOnClick}
       >
         {children}

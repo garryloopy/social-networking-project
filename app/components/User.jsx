@@ -23,7 +23,7 @@ export default function User( {user, onUserHide} ) {
         <section className="flex flex-col bg-gray-50 p-1 max-w-xs rounded-md gap-4 shadow-2xl">
             <div>
                 <Link href={`users/${user.docId}`}>
-                    <div className="flex flex-row gap-4 p-2 px-4 bg-emerald-300 hover:bg-emerald-400 active:bg-gray-300 rounded-sm hover:cursor-pointer shadow-md" onClick={debug}>
+                    <div className="flex flex-row gap-4 p-2 px-4 bg-emerald-300 hover:bg-emerald-200 active:bg-gray-300 rounded-sm hover:cursor-pointer shadow-md" onClick={debug}>
                         <img src={user.userInfo.photoURL} 
                                 alt="User image" 
                                 width={30}
