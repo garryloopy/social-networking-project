@@ -60,7 +60,7 @@ export default function header() {
   };
 
   return (
-    <header className="flex justify-between bg-gray-400 border-b-2 border-gray-50 pb-2 px-24 pt-2">
+    <header className="flex justify-between bg-gray-400 border-b-2 border-gray-300 pb-2 px-24 pt-2">
       <div className="flex flex-row gap-4">
         <Link href="/pages/Home">
           <NavBarButton>Home</NavBarButton>

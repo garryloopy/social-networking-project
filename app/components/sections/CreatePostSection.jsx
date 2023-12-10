@@ -22,7 +22,7 @@ export default function CreatePostSection({onAllowAddPostButtonClick}) {
             height={60}
             className="rounded-full border-2 border-gray-500"
             />
-            <div className="bg-gray-300 text-center rounded-sm hover:bg-gray-400 hover:cursor-pointer active:bg-gray-300 w-full">
+            <div className="bg-sky-300 text-center rounded-md hover:bg-sky-400 hover:cursor-pointer active:bg-gray-300 w-full">
             <button
                 className={`text-black ${textSize} ${textWeight} p-4 w-full rounded-sm shadow-md`}
                 onClick={onAllowAddPostButtonClick}

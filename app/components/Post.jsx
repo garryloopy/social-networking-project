@@ -26,12 +26,12 @@ export default function Post( {post} ) {
         <section className={`flex flex-col bg-gray-50 px-4 pt-4 rounded-md ${!hidden ? "gap-4 pb-4" : ""} shadow-2xl w-full` }>
             <div className={`flex flex-row justify-between ${!hidden ? "border-b-2" : ""} pb-4`}>
                 <Link href={`/pages/users/${post.data.userDocId}`} className="min-w-min">
-                    <div className="flex flex-row gap-4 p-2 px-4 bg-gray-300 hover:bg-gray-400 active:bg-gray-300 rounded-sm hover:cursor-pointer shadow-md">
+                    <div className="flex flex-row gap-4 p-2 px-4 bg-emerald-300 hover:bg-emerald-400 active:bg-green-300 rounded-sm hover:cursor-pointer shadow-md">
                         <img src={post.data.photoURL} 
                                 alt="User image" 
                                 width={60}
                                 height={60}
-                                className="rounded-full border-2 border-gray-400"/>
+                                className="rounded-full border-2 border-neutral-400"/>
                         <div className="my-auto">
                             <Text>{post.data.displayName}</Text>
                             <Subtext>{post.data.timePosted}</Subtext>
@@ -44,7 +44,7 @@ export default function Post( {post} ) {
                                 alt="User image" 
                                 width={60}
                                 height={60}
-                                className={`py-2 my-2 px-2 rounded-lg hover:cursor-pointer hover:bg-gray-300  active:bg-gray-400 opacity-50`}
+                                className={`py-2 my-2 px-2 rounded-lg hover:cursor-pointer hover:opacity-20 opacity-50`}
                                 onClick={handleOnPostHide}/>
 
             </div>

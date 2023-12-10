@@ -54,13 +54,13 @@ export default function Profile({ docId }) {
   }, [user]);
 
   return (
-    <section className="flex flex-col gap-12 text-center bg-gray-300 justify-center align-middle p-4 py-12 rounded-sm mx-24 shadow-2xl">
+    <section className="flex flex-col gap-12 text-center bg-slate-100 justify-center align-middle p-4 py-12 rounded-md mx-24 shadow-2xl">
       {user && (
         <div className="flex flex-col items-center gap-8 border-b-2 w-full pb-4 border-gray-200">
           <img
             src={user.photoURL}
             alt="Profile Picture"
-            className="rounded-full"
+            className="rounded-full border-2 border-neutral-400"
             width={300}
             height={300}
           />
