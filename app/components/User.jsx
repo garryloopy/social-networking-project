@@ -20,7 +20,7 @@ export default function User( {user, onUserHide} ) {
     }
 
     return (
-        <section className="flex flex-col bg-gray-50 p-1 max-w-xs rounded-sm gap-4 shadow-2xl">
+        <section className="flex flex-col bg-gray-50 p-1 max-w-xs rounded-md gap-4 shadow-2xl">
             <div>
                 <Link href={`users/${user.docId}`}>
                     <div className="flex flex-row gap-4 p-2 px-4 bg-emerald-300 hover:bg-emerald-400 active:bg-gray-300 rounded-sm hover:cursor-pointer shadow-md" onClick={debug}>
