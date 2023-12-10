@@ -51,7 +51,7 @@ export default function header() {
 
     return (
       <button
-        className={`text-black ${subtextSize} ${subtextWeight} px-10 py-2 shadow-lg active:bg-gray-50 rounded-md hover:bg-gray-200 bg-gray-50`}
+        className={`text-black ${subtextSize} ${subtextWeight} px-8 py-2 shadow-lg active:bg-gray-50 rounded-md hover:bg-white bg-slate-100`}
         onClick={handleOnClick}
       >
         {children}
@@ -60,8 +60,8 @@ export default function header() {
   };
 
   return (
-    <header className="flex justify-between bg-gray-400 border-b-2 border-gray-300 pb-2 px-24 pt-2">
-      <div className="flex flex-row gap-4">
+    <header className="flex justify-between bg-cyan-900 border-b-2 border-gray-300 px-24 pt-5 pb-3">
+      <div className="flex flex-row gap-3">
         <Link href="/pages/Home">
           <NavBarButton>Home</NavBarButton>
         </Link>
@@ -72,7 +72,7 @@ export default function header() {
         }
       </div>
       
-      <div className="flex flex-row gap-5">
+      <div className="flex flex-row gap-3">
         <Link href="/pages/Settings">
           <NavBarButton>Settings</NavBarButton>
         </Link>

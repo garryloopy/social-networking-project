@@ -15,8 +15,8 @@ export default function Login( {onClick} ) {
     }
     
     return (
-        <section className="bg-gray-50 p-2 flex justify-between gap-5 rounded-md
-                            hover:bg-gray-200 hover:text-white active cursor-pointer shadow-2xl"
+        <section className="bg-gray-100 p-2 flex justify-between gap-5 rounded-md
+                            hover:bg-white hover:text-white active cursor-pointer shadow-2xl"
                  onClick={handleOnButtonClick}>
             <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" 
                  alt="Github logo" 

@@ -123,8 +123,8 @@ export default function Main() {
         </div>
 
         <div className="flex flex-col gap-12 mx-4">
-          <div className="border-b-2 pb-2 flex-1  border-gray-50">
-            <Heading>Discover</Heading>
+          <div className="border-b-2 pb-2 flex-1 border-gray-50">
+            <Heading>Discover 🗺️</Heading>
           </div>
           <div className="flex flex-row flex-1 gap-40 justify-end">
             <section className="flex flex-col flex-1 gap-2">
