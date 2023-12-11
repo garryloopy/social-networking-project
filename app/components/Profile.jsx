@@ -72,7 +72,7 @@ export default function Profile({ docId }) {
       )}
       {user && (
         <div className="flex flex-col gap-4 w-full">
-          <h1 className="text-4xl font-bold text-slate-800">Posts</h1>
+          <h1 className="text-4xl font-bold text-slate-700">Posts</h1>
           {availablePosts &&
             availablePosts.map((post) => (
               <div key={post.docId} className="text-left">

@@ -24,7 +24,7 @@ export default function CreatePostSection({onAllowAddPostButtonClick}) {
             />
             <div className="bg-sky-400 text-center rounded-md hover:bg-sky-300 hover:cursor-pointer active:bg-gray-300 w-full">
             <button
-                className={`text-black ${textSize} ${textWeight} p-4 w-full rounded-sm shadow-md`}
+                className={`text-slate-700 ${textSize} ${textWeight} p-4 w-full rounded-sm shadow-md`}
                 onClick={onAllowAddPostButtonClick}
             >
                 Add a post
