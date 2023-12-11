@@ -11,7 +11,7 @@ export default function Continue( {onClick} ) {
     }
     
     return (
-        <Link className="bg-gray-100 p-4 flex justify-between gap-5 rounded-md cursor-pointer hover:bg-white active:bg-gray-50 shadow-2xl"
+        <Link className="bg-slate-100 p-4 flex justify-between gap-5 rounded-md cursor-pointer hover:bg-white active:bg-gray-50 shadow-2xl"
               onClick={handleOnButtonClick}
               href="../pages/Home">
             

@@ -36,7 +36,7 @@ const Button = ({ children, onClick }) => {
 
     return (
       <button
-        className={`text-black ${subtextSize} ${subtextWeight} px-10 py-2 shadow-lg active:bg-gray-50 rounded-md hover:bg-red-400 bg-gray-50`}
+        className={`text-black ${subtextSize} ${subtextWeight} px-10 py-2 shadow-lg active:bg-gray-50 rounded-md hover:bg-slate-200 bg-gray-50`}
         onClick={handleOnClick}
       >
         {children}
@@ -95,7 +95,7 @@ export default function Settings() {
       {user && <Footer />}
 
       {!user && 
-        <Link href={"/"} className="flex justify-center align-middle mt-auto mb-auto">
+        <Link href={"/"} className="flex justify-center align-middle mt-auto mb-auto ">
             <Button>BACK TO LOGIN PAGE</Button>
         </Link>
       }

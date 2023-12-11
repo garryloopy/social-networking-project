@@ -25,7 +25,7 @@ export default function Register( {user, onRegister} ) {
     }
 
     return (
-        <section className="flex flex-col bg-gray-200 rounded-sm gap-4 shadow-2xl">
+        <section className="flex flex-col bg-gray-200 rounded-md gap-4 shadow-2xl">
             <div className="flex flex-row justify-between border-b-2 border-b-gray-400 p-6 shadow-md">
                 <div className="flex flex-row gap-4">
                     <img src={user.photoURL} 
@@ -44,7 +44,7 @@ export default function Register( {user, onRegister} ) {
                     <Text>Name</Text>
                     <input type="text"
                         placeholder="Name..."
-                        className={`rounded-sm p-4 text-black ${subtextSize} ${subtextWeight}text-center bg-gray-50 hover:bg-white active:bg-gray-50 shadow-lg`}
+                        className={`rounded-md p-4 text-black ${subtextSize} ${subtextWeight}text-center bg-gray-50 hover:bg-white active:bg-gray-50 shadow-lg`}
                         value={nameContents}
                         onChange={(text) => setNameContents(text.target.value)}/>
                 </div>
@@ -52,12 +52,12 @@ export default function Register( {user, onRegister} ) {
                     <Text>Bio</Text>
                     <input type="text"
                         placeholder="Put something here... or not"
-                        className={`rounded-sm p-4 text-black ${subtextSize} ${subtextWeight} text-center bg-gray-50 hover:bg-white active:bg-gray-50 shadow-lg`}
+                        className={`rounded-md p-4 text-black ${subtextSize} ${subtextWeight} text-center bg-gray-50 hover:bg-white active:bg-gray-50 shadow-lg`}
                         value={bioContents}
                         onChange={(text) => setBioContents(text.target.value)}/>
                 </div>
                 
-                <div className="bg-gray-50 text-center rounded-sm hover:bg-white hover:cursor-pointer active:bg-gray-50 w-full mt-2 shadow-lg">
+                <div className="bg-gray-50 text-center rounded-md hover:bg-white hover:cursor-pointer active:bg-gray-50 w-full mt-2 shadow-lg">
                     <button className={`text-black ${textSize} ${textWeight} p-4 w-full rounded-sm`}
                             onClick={handleOnRegisterClick}>
                         Register
