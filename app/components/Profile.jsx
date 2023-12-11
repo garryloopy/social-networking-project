@@ -60,7 +60,7 @@ export default function Profile({ docId }) {
           <img
             src={user.photoURL}
             alt="Profile Picture"
-            className="rounded-full border-2 border-neutral-400"
+            className="rounded-full border-2 border-blue-900"
             width={300}
             height={300}
           />
