@@ -12,7 +12,7 @@ import {
   useEffect
 } from "react";
 
-export default function header() {
+export default function Header() {
   const { user } = useUserAuth();
 
   const [userDocId, setUserDocId] = useState(null);
