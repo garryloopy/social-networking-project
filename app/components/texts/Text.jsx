@@ -1,6 +1,6 @@
-export default function Text({children}) {
+export default function Text({children, setBlack}) {
     return (
-        <p className="text-white font-semibold text-xl">
+        <p className={`${setBlack ? "text-slate-700" : "text-white"} font-semibold text-xl`}>
             {children}
         </p>
     )

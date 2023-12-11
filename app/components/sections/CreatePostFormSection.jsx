@@ -90,7 +90,7 @@ export default function CreatePostFormSection ({onClose, currentUser, onAddPost}
               className="rounded-full border-2 border-gray-500"
             />
             <div className="my-auto">
-              <Text>{currentUser.userInfo.displayName}</Text>
+              <Text setBlack={true}>{currentUser.userInfo.displayName}</Text>
               <Subtext>{user.email}</Subtext>
             </div>
           </div>
@@ -105,7 +105,7 @@ export default function CreatePostFormSection ({onClose, currentUser, onAddPost}
         </div>
         <div className="flex flex-col justify-center gap-6 text-start">
           <div className="flex flex-col gap-2">
-            <Text>Create a post</Text>
+            <Text setBlack={true}>Create a post</Text>
             <input
                 type="text"
                 placeholder="What do you want to share?"

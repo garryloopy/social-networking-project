@@ -66,7 +66,7 @@ export default function Profile({ docId }) {
           />
           <div>
             <Heading>{user.displayName}</Heading>
-            <Text>{user.bio}</Text>
+            <Text setBlack={true}>{user.bio}</Text>
           </div>
         </div>
       )}
